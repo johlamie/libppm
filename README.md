@@ -4,11 +4,14 @@
 
 2) push an existing repository from the command line
 
-4ESGI-IABD1
+#4ESGI-IABD1
 
-Description : projet rust
+##Description : projet rust
+
+##Membres : 
 
 SOUICI Meriem Nadege
+
 LAMIEN Doubalo John Eddy
 
 ```
