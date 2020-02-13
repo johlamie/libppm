@@ -13,8 +13,3 @@
 SOUICI Meriem Nadege
 
 LAMIEN Doubalo John Eddy
-
-```
-git remote add origin git@github.com:USERNAME/libppm.git
-git push -u origin master
-```
