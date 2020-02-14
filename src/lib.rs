@@ -8,8 +8,7 @@ use std::fmt;
 use std::fs::File; // pour la lecture du fichier
 use std::path::Path;
 use std::io::{self, BufReader};
-
-
+use std::io::prelude::*;
 
 struct Pixel {
     r: u8,
@@ -48,7 +47,6 @@ impl Pixel {
         self.r = 255 - self.r;
         self.g = 255 - self.g;
         self.b = 255 - self.b;
-
     }
 
     // Function to compare two pixel structures
@@ -62,7 +60,7 @@ impl Pixel {
 
         self.r = gray;
         self.g = gray;
-        self.b = gray; 
+        self.b = gray;
     }
 
 }
@@ -184,8 +182,8 @@ impl Image{
 
 //----------------------------------------------Benchmark Tests---------------------------------------------------------------------------
 
-
-/*#[cfg(test)]
+/*
+#[cfg(test)]
 mod tests {
     #[test]
     fn exploration() {
@@ -196,8 +194,8 @@ mod tests {
     fn testPixel() {
         // let pixel = new Pixel(255,255,255);
     }
-}
-*/
+}*/
+
 
 #[cfg(test)]
 mod tests{
@@ -232,4 +230,3 @@ mod tests{
 
       
 }
-
