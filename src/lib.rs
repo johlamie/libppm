@@ -6,7 +6,7 @@
 // extern crate test; 
 
 use std::fmt;
-use std::fs::File; // pour la lecture du fichier
+use std::fs::File; // for reading the file
 use std::path::Path;
 use std::io::{self, BufReader};
 use std::io::prelude::*;
@@ -67,7 +67,7 @@ impl Pixel {
 }
 
  // Rewrite of function code eq to implement PartialEq Doc PartialEq!
- // Différence entre self minicule et masjuscule
+ // Difference between self minicule and masjuscule
 impl PartialEq for Pixel {
     fn eq(&self, other: &Self) -> bool {
         self.r == other.r && self.g == other.g && self.b == other.b
@@ -94,7 +94,7 @@ fn mysubstring(line: &String) -> Vec<u32> {
     return list;
 }
 
-// Recupere les valeurs RGB sur la ligne et la met dans un tableau que nous pouvons utiliser.
+// Get the RGB values ​​on the line and put it in an array that we can use.
 fn getcolorOnLine(line: &String) -> Vec<u8>{
     let mut list_num: Vec<u8> = Vec::new();
     let mut n = String::new();
@@ -130,12 +130,12 @@ fn new_with_file(filename: &Path) -> Option<Image>{
     let mut width: u32 = 0;
     let mut height: u32 = 0;
 
-    let mut file = File::open(filename).expect("Can't open file!"); // Ouverture du fichier
-    let buf = BufReader::new(file); // Initialisation du buffer pour la lecture des lignes 
+    let mut file = File::open(filename).expect("Can't open file!"); // Opening the file
+    let buf = BufReader::new(file); // Initialization of the buffer for reading lines
 
-    for (i, line) in buf.lines().enumerate().by_ref() {// i réprésente la ligne (commence à 0) et line la valeur de la ligne
+    for (i, line) in buf.lines().enumerate().by_ref() {// i represents the line (starts at 0) and line the value of the line
         // let l = line.unwrap(); // A SUPP
-        // Vérifier que la premiere ligne nous dis que c'est un P3 avant de continuer
+        // Check that the first line tells us that it is a P3 before continuing
         if i == 0 { 
             if (&line.unwrap() != "P3") {
                 return None;
@@ -155,14 +155,10 @@ fn new_with_file(filename: &Path) -> Option<Image>{
                 }
 
             }
-            // TODO
-            // ici que la variable buffer doit être remplie
-            // le cas ou on n'est sur le maximum, un commentaire ou une ligne qui contient l'information qu'on recherche
         }
     }
    
     return Some(Image::new(width, height, buffer));
-    // return new Images{content: Vec::new, height: 0, width: 0}
 }
 
 impl Image{
@@ -171,39 +167,35 @@ impl Image{
         Image { width, height, buffer }
     }
 
-    // Sauvegarde notre image dans un fichier ppm en respectant la structure
+    // Save our image in a ppm file respecting the structure
     fn save(&self,filename: &Path) {
-            // On lui donne le type du fichier, le width, height et la valeur maximale
+            // We give it the type of the file, the width, height and the maximum value
             let mut str: String = format!("P3\n{} {}\n255\n", self.width, self.height);
     
             for p in self.buffer.iter() {
-                // On lui donne les pixels r,g et b
+                // We give it the pixels r, g and b
                 str = str + format!("{} {} {}\n", p.r, p.g, p.b).as_ref();
             }
             
-            // Création du fichier puis ecriture
+            // File creation then writing
             let mut file = File::create(filename).expect("error");
             file.write_all(str.as_ref());
 
     }
 
-    // Inversion d'une image en utilisant la fonction inversion des pixels
+    // Inverting an image using the pixel inversion function
     fn invert(&mut self){
         for pixel in self.buffer.iter_mut() {
             pixel.invert();
         }
     }
 
-    // Mise en Noir & Blanc d'une image en utilisant la fonction grayscale des pixels
+    // Black & White of an image using the grayscale function of the pixels
     fn grayscale(&mut self) {
         for pixel in self.buffer.iter_mut() {
             pixel.grayscale();
         }
     }
-
-    // fn new_with_file_bin(filename: &Path ) -> Option<Image>{}
-
-
 }
 
 
