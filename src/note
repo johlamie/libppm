@@ -1,0 +1,5 @@
+- Le format PPM est le format de fichier d'image couleur au plus petit dénominateur commun.
+- On a d'abord un caractère magique qui permet d'identifié le type de fichier 
+- Le premier decimal le width et le second le heigth
+- Ensuite le maximum du décimal
+- 
