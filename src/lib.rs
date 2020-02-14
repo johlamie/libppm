@@ -2,7 +2,6 @@
 // cargo fmt --> to indent code
 // cargo clippy ->
 
-
 // #![feature(test)] //
 // extern crate test; 
 
@@ -20,7 +19,7 @@ struct Pixel {
 
 impl Pixel {
 
-    fn new(red: u8, green: u8, blue: u8) -> Pixel {
+    fn newPixel(red: u8, green: u8, blue: u8) -> Pixel {
         Pixel {
             r: red,
             g: green,
@@ -151,7 +150,7 @@ fn new_with_file(filename: &Path) -> Option<Image>{
             if (l.chars().next().unwrap() != '#') || (i != 2) {
                 let pix = getcolorOnLine(&l);
                 if pix.len() == 3 {
-                    let c = Pixel::new(pix[0], pix[1], pix[2]);
+                    let c = Pixel::newPixel(pix[0], pix[1], pix[2]);
                     buffer.push(c);
                 }
 
@@ -213,7 +212,7 @@ impl Image{
 
 //----------------------------------------------Benchmark Tests---------------------------------------------------------------------------
 
-
+/*
 #[cfg(test)]
 mod tests {
     #[test]
@@ -225,4 +224,39 @@ mod tests {
     fn testPixel() {
         // let pixel = new Pixel(255,255,255);
     }
+}*/
+
+
+#[cfg(test)]
+mod tests{
+  use super ::*;
+  #[test]
+/*  fn is_grayscale()
+  {
+      let pix= Pixel :: newPixel(200,30,50);
+      assert_eq!((60,17,23),pix.grayscale())
+  }
+  
+  fn it_invert()
+  {
+      let pix= Pixel :: newPixel(200,30,50);
+      //let pix_res= Pixel :: newPixel(55,225,205);
+      assert_eq!((55,225,205),pix.invert())
+          }
+*/
+
+  fn it_getGreen(){
+    let pix = Pixel :: newPixel(200,30,50);
+    assert_eq!((30), pix.getGreen())
+}
+  fn it_getBlue(){
+    let pix = Pixel :: newPixel(200,30,50);
+    assert_eq!((50), pix.getBlue())
+}
+  fn it_getRed(){
+    let pix = Pixel :: newPixel(200,30,50);
+    assert_eq!((200),pix.getRed())
+}
+
+      
 }
